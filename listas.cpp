@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "listas.h"
 using namespace std;
 
@@ -85,10 +87,26 @@ int contar(lista l){
     return cantidad;
 }
 
-//Hacer recursiva en casa
 //Borra la lista y libera la memoria.
 lista destruir(lista l){
+    if(vacia(l)){
+        return nullptr;
+    } else {
+        destruir(tail(l));
+        delete l;
+        return nullptr;
+    }
+}
 
+//Borrar recursiva Juan´s version
+lista destruir_lista(lista l){
+    if (vacia(l)){
+        return nullptr;
+    } else{
+        destruir_lista(l->sig);
+        delete l;
+        return nullptr;
+    }
 }
 
 //Retorna el primer elemento de la lista l. Pre: lista no vacía.
@@ -118,7 +136,7 @@ bool pertenece_2(lista l, int n){
         if(head(l)==n){
             return true;
         } else {
-            return(pertenece_2(l,n));
+            return(pertenece_2(tail(l),n));
         }
      }
 }
@@ -140,7 +158,59 @@ lista quitar_2(lista l, int n){
         if(head(l)==n){
             return tail(l);
         } else {
-           return cons(quitar(tail(l), n), head(l));
+           return cons(quitar_2(tail(l), n), head(l));
         }
+    }
+}
+
+//Imprime en orden los contenidos de una lista l
+void imprimir_lista(lista l){
+    while (l!=NULL){
+        cout << l->dato << " ";
+        l=l->sig;
+    }
+    cout << endl;
+}
+
+//Devuelve a l con elementos random, tantos como cantidadElementos
+lista llenar(lista l,int cantidadElementos){
+    for( int i=1; i<=cantidadElementos; i++){
+        l=cons(l, rand() % 101);
+    }
+    return l;
+    }
+
+//Imprime uno si uno no.
+void imprimir_gracioso(lista l){
+    bool bandera=true;
+    while (l!=NULL){
+        if(bandera){
+            cout << l->dato << " ";
+            l=l->sig;
+            bandera = !bandera;
+        } else {
+            l=l->sig;
+            bandera = !bandera;
+        }
+    }
+    cout << endl;
+}
+
+//Imprime solo pares...
+void imprimir_solo_pares(lista l){
+     while (l!=NULL){
+        if(l->dato%2==0){
+        cout << l->dato << " ";
+        }
+        l=l->sig;
+     }
+    cout << endl;
+}
+
+//Imprime la lista al revés.
+void imprimir_reves(lista l){
+    if(l!=NULL){
+        imprimir_reves(tail(l));
+        cout << l->dato << ' ';
     }
 }

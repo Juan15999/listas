@@ -24,3 +24,17 @@ int contar_2(lista l);
 bool pertenece_2(lista l, int n);
 //Es snoc pero recursivo y sin estructura interna.
 lista snoc_2(lista l, int n);
+//Borrar recursiva Juan´s version
+lista destruir_lista(lista l);
+//Borra la lista y libera la memoria.
+lista destruir(lista l);
+//Imprime en orden los contenidos de una lista l
+void imprimir_lista(lista l);
+//Devuelve a l con elementos random, tantos como cantidadElementos
+lista llenar(lista l,int cantidadElementos);
+//Imprime uno si uno no.
+void imprimir_gracioso(lista l);
+//imprime solo pares.
+void imprimir_solo_pares(lista l);
+//Imprime la lista al revés.
+void imprimir_reves(lista l);
