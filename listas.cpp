@@ -214,3 +214,27 @@ void imprimir_reves(lista l){
         cout << l->dato << ' ';
     }
 }
+
+//Elimina repetidos de la lista.
+lista eliminar_repetidos(lista l){
+    if (vacia(l)){
+        return l;
+    } else {
+        lista controlador=l;
+        while(controlador!=NULL){
+            lista avanzador=controlador->sig, ayu_avanzador=controlador;
+            while(avanzador!=NULL){
+                if(controlador->dato==avanzador->dato){
+                    ayu_avanzador->sig=avanzador->sig;
+                    delete avanzador;
+                    avanzador=ayu_avanzador->sig;
+                } else{
+                avanzador=avanzador->sig;
+                ayu_avanzador=ayu_avanzador->sig;
+                }
+            }
+            controlador=controlador->sig;
+        }
+    return l;
+    }
+}

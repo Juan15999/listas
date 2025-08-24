@@ -38,3 +38,5 @@ void imprimir_gracioso(lista l);
 void imprimir_solo_pares(lista l);
 //Imprime la lista al revés.
 void imprimir_reves(lista l);
+//Elimina repetidos de la lista.
+lista eliminar_repetidos(lista l);
