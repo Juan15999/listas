@@ -15,13 +15,13 @@ int main(){
     l=snoc(l, 6);
     l=snoc(l, 7);
     imprimir_lista(l);
-    l=intercambiar_posiciones(l, 7, 1);
+    l=intercambiar_posiciones(l, 6, 2);
     imprimir_lista(l);
-    l=intercambiar_posiciones(l, 6, 1);
+    l=intercambiar_posiciones(l, 5, 4);
     imprimir_lista(l);
-    l=intercambiar_posiciones(l, 5, 1);
+     l=intercambiar_posiciones(l, 1, 7);
     imprimir_lista(l);
-    l=intercambiar_posiciones(l, 2, 6);
+    l=intercambiar_posiciones(l, 5, 3);
     imprimir_lista(l);
     l=intercambiar_posiciones(l, 1, 1);
     imprimir_lista(l);

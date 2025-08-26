@@ -256,7 +256,7 @@ lista intercambiar_posiciones(lista l, int n, int m){
         cout << m << " no se encuentra entre los elementos de la lista" << endl;
         return l;
     } else{
-        lista aux1=l, aux2=l->sig, ant_nodo_n, ant_nodo_m, nodo_n, nodo_m, sig_nodo_n, sig_nodo_m;
+        lista aux1=l, aux2=l, ant_nodo_n, ant_nodo_m, nodo_n, nodo_m, sig_nodo_n, sig_nodo_m;
         while(aux2!=NULL){
             if(aux2->dato==n){
                 ant_nodo_n=aux1;
@@ -275,10 +275,20 @@ lista intercambiar_posiciones(lista l, int n, int m){
                 aux2=aux2->sig;
             }
         }
-        ant_nodo_n->sig=nodo_m;
-        nodo_m->sig= sig_nodo_n;
-        ant_nodo_m->sig=nodo_n;
-        nodo_n->sig=sig_nodo_m;
+        if(nodo_n->sig==nodo_m){
+            ant_nodo_n->sig=nodo_m;
+            nodo_m->sig=nodo_n;
+            nodo_n->sig=sig_nodo_m;
+        } else if(nodo_m->sig==nodo_n){
+            ant_nodo_m->sig=nodo_n;
+            nodo_n->sig=nodo_m;
+            nodo_m->sig=sig_nodo_n;
+        } else {
+            ant_nodo_n->sig=nodo_m;
+            nodo_m->sig= sig_nodo_n;
+            ant_nodo_m->sig=nodo_n;
+            nodo_n->sig=sig_nodo_m;
+        }
     }
     return l;
 }
