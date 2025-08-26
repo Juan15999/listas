@@ -49,7 +49,7 @@ bool vacia(lista l){
 bool pertenece(lista l, int n){
     bool bandera=false;
     if(l!=NULL){
-        while(l->sig!=NULL && bandera==false){
+        while(l!=NULL && bandera==false){
             if(l->dato==n){
                 bandera=true;
             }
@@ -237,4 +237,48 @@ lista eliminar_repetidos(lista l){
         }
     return l;
     }
+}
+
+//Intercambia las posiciones de dos elementos de la lista l.
+lista intercambiar_posiciones(lista l, int n, int m){
+    if(vacia(l)){
+        cout << "La lista no contiene los elementos dados porque está vacía" << endl;
+        return l;
+    } else if(m==n){
+        return l;
+    } else if(!pertenece(l, n) && !pertenece(l, m)){
+        cout << "Ninguno de los elementos dados esta en la lista" << endl;
+        return l;
+    } else if(!pertenece(l, n)){
+        cout << n << " no se encuentra entre los elementos de la lista" << endl;
+        return l;
+    } else if(!pertenece(l, m)){
+        cout << m << " no se encuentra entre los elementos de la lista" << endl;
+        return l;
+    } else{
+        lista aux1=l, aux2=l->sig, ant_nodo_n, ant_nodo_m, nodo_n, nodo_m, sig_nodo_n, sig_nodo_m;
+        while(aux2!=NULL){
+            if(aux2->dato==n){
+                ant_nodo_n=aux1;
+                nodo_n=aux2;
+                sig_nodo_n=aux2->sig;
+                aux1=aux2;
+                aux2=aux2->sig;
+            } else if(aux2->dato==m) {
+                ant_nodo_m=aux1;
+                nodo_m=aux2;
+                sig_nodo_m=aux2->sig;
+                aux1=aux2;
+                aux2=aux2->sig;
+            } else {
+                aux1=aux2;
+                aux2=aux2->sig;
+            }
+        }
+        ant_nodo_n->sig=nodo_m;
+        nodo_m->sig= sig_nodo_n;
+        ant_nodo_m->sig=nodo_n;
+        nodo_n->sig=sig_nodo_m;
+    }
+    return l;
 }

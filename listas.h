@@ -40,3 +40,5 @@ void imprimir_solo_pares(lista l);
 void imprimir_reves(lista l);
 //Elimina repetidos de la lista.
 lista eliminar_repetidos(lista l);
+//Intercambia las posiciones de dos elementos de la lista l.
+lista intercambiar_posiciones(lista l, int n, int m);
